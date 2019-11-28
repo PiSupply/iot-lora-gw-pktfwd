@@ -19,7 +19,8 @@ RUN apk add protobuf \
   protobuf-c \
   build-base \
   gcc \
-  libc6-compat
+  libc6-compat \
+  linux-headers
 
 COPY buildfiles buildfiles
 
