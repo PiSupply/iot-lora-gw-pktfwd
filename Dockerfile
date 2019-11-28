@@ -1,7 +1,7 @@
 #Packet Forwarder Docker File
 #(C) Pi Supply 2019
 #Licensed under the GNU GPL V3 License.
-FROM debian:buster-slim AS buildstep
+FROM arm32v6/alpine:latest
 
 WORKDIR /opt/iotloragateway/packet_forwarder
 
@@ -26,7 +26,7 @@ COPY buildfiles buildfiles
 RUN chmod +x ./buildfiles/packetCompile.sh
 RUN ./buildfiles/packetCompile.sh
 
-FROM debian:buster-slim
+FROM arm32v6/alpine:latest
 
 WORKDIR /opt/iotloragateway/packet_forwarder
 
