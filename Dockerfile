@@ -5,7 +5,8 @@ FROM arm32v6/alpine:edge
 
 WORKDIR /opt/iotloragateway/packet_forwarder
 
-RUN apk update && apk upgrade
+RUN apk update
+RUN apk upgrade
 
 RUN apk add protobuf \
   protobuf-dev \
