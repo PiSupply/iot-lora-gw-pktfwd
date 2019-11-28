@@ -1,7 +1,7 @@
 #Packet Forwarder Docker File
 #(C) Pi Supply 2019
 #Licensed under the GNU GPL V3 License.
-FROM arm32v6/alpine:latest
+FROM arm32v6/alpine:edge
 
 WORKDIR /opt/iotloragateway/packet_forwarder
 
