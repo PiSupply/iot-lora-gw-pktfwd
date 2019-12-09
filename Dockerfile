@@ -1,16 +1,11 @@
 #Packet Forwarder Docker File
 #(C) Pi Supply 2019
 #Licensed under the GNU GPL V3 License.
-FROM arm32v6/alpine:edge
+FROM debian:buster-slim AS buildstep
 
 WORKDIR /opt/iotloragateway/packet_forwarder
 
-<<<<<<< HEAD
-RUN apk update
-RUN apk upgrade
-=======
 RUN apt-get update && apt-get upgrade -y
->>>>>>> parent of aaa05d3... Changing to alpine
 
 RUN apt-get -y install protobuf-compiler \
   libprotobuf-dev \
@@ -19,26 +14,18 @@ RUN apt-get -y install protobuf-compiler \
   libtool \
   autoconf \
   git \
-<<<<<<< HEAD
-  protobuf-c \
-  build-base \
-  gcc \
-  libc6-compat \
-  linux-headers
-=======
   pkg-config \
   protobuf-c-compiler \
   libprotobuf-c-dev \
   build-essential \
   libc6-dev
->>>>>>> parent of aaa05d3... Changing to alpine
 
 COPY buildfiles buildfiles
 
 RUN chmod +x ./buildfiles/packetCompile.sh
 RUN ./buildfiles/packetCompile.sh
 
-FROM arm32v6/alpine:latest
+FROM debian:buster-slim
 
 WORKDIR /opt/iotloragateway/packet_forwarder
 
