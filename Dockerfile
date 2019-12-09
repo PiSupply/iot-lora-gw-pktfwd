@@ -5,23 +5,33 @@ FROM arm32v6/alpine:edge
 
 WORKDIR /opt/iotloragateway/packet_forwarder
 
+<<<<<<< HEAD
 RUN apk update
 RUN apk upgrade
+=======
+RUN apt-get update && apt-get upgrade -y
+>>>>>>> parent of aaa05d3... Changing to alpine
 
-RUN apk add protobuf \
-  protobuf-dev \
-  protobuf-c-dev \
-  libprotoc \
-  protoc \
+RUN apt-get -y install protobuf-compiler \
+  libprotobuf-dev \
+  libprotoc-dev \
   automake \
   libtool \
-  autoconf2.13 \
+  autoconf \
   git \
+<<<<<<< HEAD
   protobuf-c \
   build-base \
   gcc \
   libc6-compat \
   linux-headers
+=======
+  pkg-config \
+  protobuf-c-compiler \
+  libprotobuf-c-dev \
+  build-essential \
+  libc6-dev
+>>>>>>> parent of aaa05d3... Changing to alpine
 
 COPY buildfiles buildfiles
 
