@@ -95,7 +95,7 @@ if(moduleId == 0):
     sleep(1)
     GPIO.output(22,0)
     print("Starting")
-    os.exec("./packetforwarder_hat")
+    os.system("./packetforwarder_hat")
     while True:
         sleep(60)
 elif(moduleId == 1):
@@ -107,6 +107,6 @@ elif(moduleId == 1):
     sleep(1)
     GPIO.output(22,0)
     print("Starting")
-    os.exec("./packetforwarder_sg1")
+    os.system("./packetforwarder_sg1")
     while True:
         sleep(60)
