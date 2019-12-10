@@ -4,6 +4,8 @@ import os
 import yaml
 import json
 from pprint import pprint
+from RPi import GPIO
+from time import sleep
 moduleId = int(os.environ['LORAMODULE'])
 #moduleId = 0
 
@@ -19,9 +21,9 @@ with open("/opt/iotloragateway/config/gateway_configuration.yml", 'r') as yamlFi
             die()
     except yaml.YAMLError as exc:
         print(exc)
-#print(config)
+print(config)
 
-#print(configLora)
+print(configLora)
 
 
 with open('local_conf.json') as jsonFile:
@@ -72,3 +74,8 @@ else:
 
 with open('local_conf.json', 'w') as jsonOut:
     json.dump(newConfig, jsonOut)
+
+#Launch the packet Forwarder
+
+while True:
+    sleep(60)
