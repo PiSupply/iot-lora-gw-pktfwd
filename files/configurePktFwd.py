@@ -1,5 +1,5 @@
 #Configure Packet Forwarder Program
-#Configures the packet forwarder based on the YAML File and Env Variable
+#Configures the packet forwarder based on the YAML File and Env Variables
 import os
 import yaml
 import json
