@@ -9,6 +9,9 @@ from time import sleep
 moduleId = int(os.environ['LORAMODULE'])
 #moduleId = 0
 
+GPIO.setmode(GPIO.BCM)
+
+
 with open("/opt/iotloragateway/config/gateway_configuration.yml", 'r') as yamlFile:
     try:
         if(moduleId == 0):
@@ -21,9 +24,9 @@ with open("/opt/iotloragateway/config/gateway_configuration.yml", 'r') as yamlFi
             die()
     except yaml.YAMLError as exc:
         print(exc)
-print(config)
+#print(config)
 
-print(configLora)
+#print(configLora)
 
 
 with open('local_conf.json') as jsonFile:
@@ -77,5 +80,33 @@ with open('local_conf.json', 'w') as jsonOut:
 
 #Launch the packet Forwarder
 
-while True:
-    sleep(60)
+if(configLora['enabled'] == "false")
+    print("Forwarder Disabled")
+    while True:
+        sleep(60)
+
+#Continue
+if(moduleId == 0):
+    #Start Packet Forwarder 0
+    #Reset on pin 22
+    print("Resetting concentrator")
+    GPIO.setup(22,GPIO.OUT)
+    GPIO.output(22,1)
+    sleep(1)
+    GPIO.output(22,0)
+    print("Starting")
+    os.exec("./packetforwarder_hat")
+    while True:
+        sleep(60)
+elif(moduleId == 1):
+    #Start Packet Forwarder 0
+    #Reset on pin 22
+    print("Resetting concentrator")
+    GPIO.setup(22,GPIO.OUT)
+    GPIO.output(22,1)
+    sleep(1)
+    GPIO.output(22,0)
+    print("Starting")
+    os.exec("./packetforwarder_sg1")
+    while True:
+        sleep(60)
