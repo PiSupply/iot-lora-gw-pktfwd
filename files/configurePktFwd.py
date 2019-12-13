@@ -80,7 +80,7 @@ with open('local_conf.json', 'w') as jsonOut:
 
 #Launch the packet Forwarder
 
-if(configLora['enabled'] == "false"):
+if(configLora['enabled'] == False):
     print("Forwarder Disabled")
     while True:
         sleep(60)
