@@ -31,7 +31,7 @@ WORKDIR /opt/iotloragateway/packet_forwarder
 
 RUN apt-get update && apt-get upgrade -y
 
-RUN apt-get -y install libprotobuf-c1 python3-minimal python3-yaml python3-pip
+RUN apt-get -y install libprotobuf-c1 python3-minimal python3-yaml 
 RUN apt-get clean
 RUN pip3 install RPi.GPIO
 
