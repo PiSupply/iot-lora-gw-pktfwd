@@ -83,7 +83,8 @@ with open('local_conf.json', 'w') as jsonOut:
 if(configLora['enabled'] == False):
     print("Forwarder Disabled")
     while True:
-        sleep(60)
+        sleep(120)
+    print("Forwarder Disabled")
 
 #Continue
 if(moduleId == 0):
@@ -91,6 +92,10 @@ if(moduleId == 0):
     #Reset on pin 22
     print("Resetting concentrator")
     GPIO.setup(22,GPIO.OUT)
+    GPIO.output(22,1)
+    sleep(1)
+    GPIO.output(22,0)
+    sleep(1)
     GPIO.output(22,1)
     sleep(1)
     GPIO.output(22,0)
@@ -102,10 +107,14 @@ elif(moduleId == 1):
     #Start Packet Forwarder 0
     #Reset on pin 22
     print("Resetting concentrator")
-    GPIO.setup(22,GPIO.OUT)
-    GPIO.output(22,1)
+    GPIO.setup(39,GPIO.OUT)
+    GPIO.output(39,1)
     sleep(1)
-    GPIO.output(22,0)
+    GPIO.output(39,0)
+    sleep(1)
+    GPIO.output(39,1)
+    sleep(1)
+    GPIO.output(39,0)
     print("Starting")
     os.system("./packetforwarder_sg1")
     while True:
