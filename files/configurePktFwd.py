@@ -4,12 +4,12 @@ import os
 import yaml
 import json
 from pprint import pprint
-from RPi import GPIO
+
 from time import sleep
 moduleId = int(os.environ['LORAMODULE'])
 #moduleId = 0
 
-GPIO.setmode(GPIO.BCM)
+
 
 
 with open("/opt/iotloragateway/config/gateway_configuration.yml", 'r') as yamlFile:
@@ -90,32 +90,31 @@ if(configLora['enabled'] == False):
 if(moduleId == 0):
     #Start Packet Forwarder 0
     #Reset on pin 22
-    print("Resetting concentrator")
-    GPIO.setup(22,GPIO.OUT)
-    GPIO.output(22,1)
+    print("Resetting concentrator pin 22")
+    os.system('echo "22" > /sys/class/gpio/export')
+
+    os.system('echo "out" > /sys/class/gpio/gpio22/direction')
+    os.system('echo "1" > /sys/class/gpio/gpio22/value')
     sleep(1)
-    GPIO.output(22,0)
+    os.system('echo "1" > /sys/class/gpio/gpio22/value')
     sleep(1)
-    GPIO.output(22,1)
-    sleep(1)
-    GPIO.output(22,0)
     print("Starting")
     os.system("./packetforwarder_hat")
     while True:
         sleep(60)
 elif(moduleId == 1):
     #Start Packet Forwarder 0
-    #Reset on pin 22
-    print("Resetting concentrator")
-    GPIO.setup(39,GPIO.OUT)
-    GPIO.output(39,1)
+    #Reset on pin 39
+    os.system('echo "39" > /sys/class/gpio/export')
+
+    os.system('echo "out" > /sys/class/gpio/gpio39/direction')
+    os.system('echo "1" > /sys/class/gpio/gpio39/value')
     sleep(1)
-    GPIO.output(39,0)
+    os.system('echo "1" > /sys/class/gpio/gpio39/value')
     sleep(1)
-    GPIO.output(39,1)
-    sleep(1)
-    GPIO.output(39,0)
     print("Starting")
-    os.system("./packetforwarder_sg1")
+    os.system("./packetforwarder_hat")
+    while True:
+        sleep(60)
     while True:
         sleep(60)
