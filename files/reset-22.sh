@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+whoami
 if [ ! -d "/sys/class/gpio/gpio22" ]; then
     echo "22" > /sys/class/gpio/export
 fi
