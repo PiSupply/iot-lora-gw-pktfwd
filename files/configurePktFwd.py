@@ -9,8 +9,8 @@ from time import sleep
 moduleId = int(os.environ['LORAMODULE'])
 #moduleId = 0
 
-print("Sleeping 30 seconds")
-sleep(30)
+print("Sleeping 10 seconds")
+sleep(10)
 
 
 with open("/opt/iotloragateway/config/gateway_configuration.yml", 'r') as yamlFile:
@@ -109,16 +109,18 @@ if(moduleId == 0):
 elif(moduleId == 1):
     #Start Packet Forwarder 0
     #Reset on pin 39
-    os.system('echo "39" > /sys/class/gpio/export')
-
-    os.system('echo "out" > /sys/class/gpio/gpio39/direction')
-    os.system('echo "1" > /sys/class/gpio/gpio39/value')
+    print("Resetting concentrator pin 22")
+    print("Export")
+    os.system('echo "22" > /sys/class/gpio/export')
+    print("Dir")
+    os.system('echo "out" > /sys/class/gpio/gpio22/direction')
+    print("1")
+    os.system('echo "1" > /sys/class/gpio/gpio22/value')
     sleep(1)
-    os.system('echo "0" > /sys/class/gpio/gpio39/value')
+    print("0")
+    os.system('echo "0" > /sys/class/gpio/gpio22/value')
     sleep(1)
     print("Starting")
     os.system("./packetforwarder_hat")
-    while True:
-        sleep(60)
     while True:
         sleep(60)
