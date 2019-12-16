@@ -109,16 +109,16 @@ if(moduleId == 0):
 elif(moduleId == 1):
     #Start Packet Forwarder 0
     #Reset on pin 39
-    print("Resetting concentrator pin 22")
+    print("Resetting concentrator pin 39")
     print("Export")
-    os.system('echo "22" > /sys/class/gpio/export')
+    os.system('echo "39" > /sys/class/gpio/export')
     print("Dir")
-    os.system('echo "out" > /sys/class/gpio/gpio22/direction')
+    os.system('echo "out" > /sys/class/gpio/gpio39/direction')
     print("1")
-    os.system('echo "1" > /sys/class/gpio/gpio22/value')
+    os.system('echo "1" > /sys/class/gpio/gpio39/value')
     sleep(1)
     print("0")
-    os.system('echo "0" > /sys/class/gpio/gpio22/value')
+    os.system('echo "0" > /sys/class/gpio/gpio39/value')
     sleep(1)
     print("Starting")
     os.system("./packetforwarder_hat")
