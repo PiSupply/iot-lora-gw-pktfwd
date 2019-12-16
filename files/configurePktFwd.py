@@ -9,7 +9,7 @@ from time import sleep
 moduleId = int(os.environ['LORAMODULE'])
 #moduleId = 0
 
-print("Sleeping 10 seconds")
+print("Sleeping 60 seconds")
 sleep(60)
 
 
