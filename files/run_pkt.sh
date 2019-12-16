@@ -3,4 +3,4 @@
 #Run Packetforward
 #This script runs on the boot of the container
 
-python3 configurePktFwd.py
+python3 -u configurePktFwd.py
