@@ -10,7 +10,7 @@ moduleId = int(os.environ['LORAMODULE'])
 #moduleId = 0
 
 print("Sleeping 10 seconds")
-sleep(10)
+sleep(60)
 
 
 with open("/opt/iotloragateway/config/gateway_configuration.yml", 'r') as yamlFile:
