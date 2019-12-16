@@ -60,6 +60,10 @@ RUN ls -a
 
 COPY files/run_pkt.sh .
 COPY files/configurePktFwd.py .
+COPY files/reset-22.sh .
+COPY files/reset-39.sh .
+RUN chmod +x reset-22.sh
+RUN chmod +x reset-39.sh
 RUN chmod +x run_pkt.sh
 RUN chmod +x configurePktFwd.py
 
