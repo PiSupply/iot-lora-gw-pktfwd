@@ -94,13 +94,9 @@ if(moduleId == 0):
     print("Resetting concentrator pin 22")
     os.system("./reset-22.sh")
     os.system("./packetforwarder_hat")
-    while True:
-        sleep(60)
 elif(moduleId == 1):
     #Start Packet Forwarder 0
     #Reset on pin 39
     print("Resetting concentrator pin 39")
     os.system("./reset-39.sh")
     os.system("./packetforwarder_sg1")
-    while True:
-        sleep(60)
