@@ -96,6 +96,8 @@ if(moduleId == 0):
     sleep(5)
     print("Starting")
     os.system("./packetforwarder_hat")
+    while True:
+        sleep(120)
 elif(moduleId == 1):
     #Start Packet Forwarder 0
     #Reset on pin 39
@@ -104,3 +106,5 @@ elif(moduleId == 1):
     sleep(5)
     print("Starting")
     os.system("./packetforwarder_sg1")
+    while True:
+        sleep(120)
