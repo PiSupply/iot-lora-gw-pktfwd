@@ -49,8 +49,6 @@ RUN chmod +x ./packetforwarder_hat
 RUN chmod +x ./packetforwarder_sg0
 RUN chmod +x ./packetforwarder_sg1
 
-RUN ls -a
-
 COPY files/run_pkt.sh .
 COPY files/configurePktFwd.py .
 COPY files/reset-22.sh .
