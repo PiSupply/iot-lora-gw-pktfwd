@@ -18,8 +18,6 @@ RUN apt-get update && apt-get upgrade -y && apt-get -y install protobuf-compiler
   build-essential \
   libc6-dev
 
-RUN
-
 COPY buildfiles buildfiles
 
 RUN chmod +x ./buildfiles/packetCompile.sh
