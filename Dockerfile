@@ -31,13 +31,7 @@ FROM debian:buster-slim
 
 WORKDIR /opt/iotloragateway/packet_forwarder
 
-RUN apt-get update && apt-get upgrade -y && apt-get -y install libprotobuf-c1 python3-minimal python3-yaml --no-install-recommends && apt-get clean
-
-
-
-
-RUN apt-get clean
-RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get upgrade -y && apt-get -y install libprotobuf-c1 python3-minimal python3-yaml --no-install-recommends && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY --from=buildstep /opt/iotloragateway/packetforwarder_hat .
 COPY --from=buildstep /opt/iotloragateway/packetforwarder_sg0 .
