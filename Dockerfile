@@ -5,9 +5,7 @@ FROM debian:buster-slim AS buildstep
 
 WORKDIR /opt/iotloragateway/packet_forwarder
 
-RUN apt-get update && apt-get upgrade -y
-
-RUN apt-get -y install protobuf-compiler \
+RUN apt-get update && apt-get upgrade -y && apt-get -y install protobuf-compiler \
   libprotobuf-dev \
   libprotoc-dev \
   automake \
@@ -20,19 +18,20 @@ RUN apt-get -y install protobuf-compiler \
   build-essential \
   libc6-dev
 
+RUN
+
 COPY buildfiles buildfiles
 
 RUN chmod +x ./buildfiles/packetCompile.sh
 RUN ./buildfiles/packetCompile.sh
 
+
+
 FROM debian:buster-slim
 
 WORKDIR /opt/iotloragateway/packet_forwarder
 
-RUN apt-get update && apt-get upgrade -y
-
-RUN apt-get -y install libprotobuf-c1 python3-minimal python3-yaml --no-install-recommends
-RUN apt-get clean
+RUN apt-get update && apt-get upgrade -y && apt-get -y install libprotobuf-c1 python3-minimal python3-yaml --no-install-recommends && apt-get clean
 
 
 
