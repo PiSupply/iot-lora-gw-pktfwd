@@ -91,10 +91,11 @@ if(configLora['enabled'] == False):
 if(moduleId == 0):
     #Start Packet Forwarder 0
     #Reset on pin 38
+    sleep(2)
     print("Nebra Smart Gateway")
     print("Resetting concentrator pin 38")
     os.system("./reset-38.sh")
-    sleep(5)
+    #sleep(7)
     print("Starting")
     os.system("./packetforwarder_sg0")
     while True:
