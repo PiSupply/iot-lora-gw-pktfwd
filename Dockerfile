@@ -20,6 +20,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get -y install protobuf-compiler
 
 COPY buildfiles buildfiles
 
+ARG moo=1
 RUN chmod +x ./buildfiles/packetCompile.sh
 RUN ./buildfiles/packetCompile.sh
 
