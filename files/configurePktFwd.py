@@ -85,7 +85,6 @@ if(configLora['enabled'] == False):
     print("Forwarder Disabled")
     while True:
         sleep(120)
-    print("Forwarder Disabled")
 
 #Continue
 if(moduleId == 0):
@@ -95,7 +94,7 @@ if(moduleId == 0):
     print("Nebra Smart Gateway")
     print("Resetting concentrator pin 38")
     os.system("./reset-38.sh")
-    #sleep(7)
+    sleep(3)
     print("Starting")
     os.system("./packetforwarder_sg0")
     while True:
