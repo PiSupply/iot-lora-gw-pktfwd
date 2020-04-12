@@ -13,9 +13,6 @@ from time import sleep
 print("Sleeping 10 seconds")
 sleep(10)
 
-#Reset all pins
-subprocess.call("./reset-pins.sh")
-
 #Write configuration file for HAT packet
 
 #Write configuration file for SG0
