@@ -1,113 +1,66 @@
 #Configure Packet Forwarder Program
 #Configures the packet forwarder based on the YAML File and Env Variables
 import os
+import subprocess
 import yaml
 import json
 from pprint import pprint
 
 from time import sleep
-moduleId = int(os.environ['LORAMODULE'])
+#moduleId = int(os.environ['LORAMODULE'])
 #moduleId = 0
 
 print("Sleeping 10 seconds")
 sleep(10)
 
+#Reset all pins
+subprocess.call("./reset-pins.sh")
 
-with open("/opt/iotloragateway/config/gateway_configuration.yml", 'r') as yamlFile:
-    try:
-        if(moduleId == 0):
-            config = yaml.safe_load(yamlFile)
-            configLora = config['packet-forwarder-1']
-        elif(moduleId == 1):
-            config = yaml.safe_load(yamlFile)
-            configLora = config['packet-forwarder-2']
-        else:
-            die()
-    except yaml.YAMLError as exc:
-        print(exc)
-#print(config)
+#Write configuration file for HAT packet
 
-#print(configLora)
+#Write configuration file for SG0
+
+#Write configuration file for SG1
 
 
-with open('local_conf.json') as jsonFile:
-    newConfig = json.load(jsonFile)
+#If HAT Enabled
+
+#Start Packet Forwarder HAT
+#Reset on pin 38
+sleep(2)
+print("Pi Supply LoRa HAT")
+print("Resetting concentrator pin 22")
+
+#sleep(7)
+print("Starting")
+os.system("./packetforwarder_hat")
+while True:
+    sleep(120)
 
 
+#If SG0 Enabled
+#Start Packet Forwarder SG0
+#Reset on pin 38
+sleep(2)
+print("Nebra Smart Gateway")
+print("Resetting concentrator pin 38")
 
-#Fill out the JSON File from the YAML File
-newConfig['gateway_conf']['contact_email'] = config['user']['email-address']
-newConfig['gateway_conf']['description'] = config['gateway-info']['gateway-description']
-newConfig['gateway_conf']['gateway_ID'] = configLora['packet-forwarder-eui']
-
-newConfig['gateway_conf']['ref_altitude'] = config['location']['alt']
-newConfig['gateway_conf']['ref_latitude'] = config['location']['lat']
-newConfig['gateway_conf']['ref_longitude'] = config['location']['lon']
+#sleep(7)
+print("Starting")
+subprocess.popen("./packetforwarder_sg0")
 
 
-newConfig['gateway_conf']['servers'][0]['server_address'] = configLora['router']
-#if ttn
-if(configLora['providerType'] == "TTN"):
-    newConfig['gateway_conf']['servers'][0]['serv_type'] = "ttn"
-    newConfig['gateway_conf']['servers'][0]['serv_gw_key'] = configLora['packet-forwarder-key']
-    newConfig['gateway_conf']['servers'][0]['serv_gw_id'] = configLora['packet-forwarder-id']
-    newConfig['gateway_conf']['servers'][0]['serv_port_up'] = 1700
-    newConfig['gateway_conf']['servers'][0]['serv_port_down'] = 1700
+#If SG1 Enabled
+#Start Packet Forwarder SG1
+#Reset on pin 39
+print("Nebra Smart Gateway")
+print("Resetting concentrator pin 39")
 
-#If Loriot
-elif(configLora['providerType'] == "LORIOT"):
-    newConfig['gateway_conf']['servers'][0]['serv_type'] = "semtech"
-    newConfig['gateway_conf']['servers'][0]['serv_port_up'] = 1700
-    newConfig['gateway_conf']['servers'][0]['serv_port_down'] = 1700
+sleep(5)
+print("Starting")
+os.system("./packetforwarder_sg1")
 
-else:
-    newConfig['gateway_conf']['servers'][0]['serv_type'] = "semtech"
-    newConfig['gateway_conf']['servers'][0]['serv_port_up'] = 1700
-    newConfig['gateway_conf']['servers'][0]['serv_port_down'] = 1700
 
-#GPS Module
-if(config['gps']['enabled'] == True):
-    newConfig['gateway_conf']['gps'] = True;
-    newConfig['gateway_conf']['fake_gps'] = False;
-
-else:
-    newConfig['gateway_conf']['gps'] = True;
-    newConfig['gateway_conf']['fake_gps'] = False;
-
-#pprint(newConfig)
-
-with open('local_conf.json', 'w') as jsonOut:
-    json.dump(newConfig, jsonOut)
-
-#Launch the packet Forwarder
-
-if(configLora['enabled'] == False):
-    print("Forwarder Disabled")
-    while True:
-        sleep(120)
-    print("Forwarder Disabled")
-
-#Continue
-if(moduleId == 0):
-    #Start Packet Forwarder 0
-    #Reset on pin 38
-    sleep(2)
-    print("Nebra Smart Gateway")
-    print("Resetting concentrator pin 38")
-    os.system("./reset-38.sh")
-    #sleep(7)
-    print("Starting")
-    os.system("./packetforwarder_sg0")
-    while True:
-        sleep(120)
-elif(moduleId == 1):
-    #Start Packet Forwarder 0
-    #Reset on pin 39
-    print("Nebra Smart Gateway")
-    print("Resetting concentrator pin 39")
-    os.system("./reset-39.sh")
-    sleep(5)
-    print("Starting")
-    os.system("./packetforwarder_sg1")
-    while True:
-        sleep(120)
+#Sleep forever
+while True:
+    sleep(120)

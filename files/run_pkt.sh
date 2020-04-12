@@ -3,9 +3,10 @@
 #Run Packetforward
 #This script runs on the boot of the container
 
-#python3 -u configurePktFwd.py
 
-#Lets see if we can bodge
-./reset-38.sh
-./reset-39.sh
-./packetforwarder_sg0 & ./packetforwarder_sg1
+
+#Reset all pins
+./reset-all.sh
+
+#Run python to do configuration and run the induvidual forwarders
+python3 -u configurePktFwd.py
