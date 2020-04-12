@@ -8,4 +8,4 @@
 #Lets see if we can bodge
 ./reset-38.sh
 ./reset-39.sh
-./packetforwarder_sg0 && ./packetforwarder_sg1
+./packetforwarder_sg0 & ./packetforwarder_sg1
