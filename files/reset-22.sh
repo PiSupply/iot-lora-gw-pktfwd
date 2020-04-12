@@ -5,6 +5,6 @@ if [ ! -d "/sys/class/gpio/gpio22" ]; then
 fi
 echo "out" > /sys/class/gpio/gpio22/direction
 echo "1" > /sys/class/gpio/gpio22/value
-sleep 1
+sleep 2
 echo "0" > /sys/class/gpio/gpio22/value
-sleep 1
+sleep 2
