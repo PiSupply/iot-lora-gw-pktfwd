@@ -32,7 +32,7 @@ sleep(10)
 #print("Starting")
 #os.system("./packetforwarder_hat")
 #while True:#
-    sleep(120)
+#    sleep(120)
 
 
 #If SG0 Enabled
