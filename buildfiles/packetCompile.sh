@@ -9,7 +9,7 @@ git clone https://github.com/PiSupply/lora_gateway.git
 git clone https://github.com/PiSupply/paho.mqtt.embedded-c.git
 git clone https://github.com/PiSupply/ttn-gateway-connector.git
 git clone https://github.com/PiSupply/protobuf-c.git
-git clone -b docker --single-branch https://github.com/PiSupply/packet_forwarder.git
+git clone https://github.com/PiSupply/packet_forwarder.git
 git clone https://github.com/PiSupply/iot-lora-controller.git
 
 cd /opt/iotloragateway/dev/lora_gateway/libloragw
@@ -28,6 +28,7 @@ cp /opt/iotloragateway/dev/ttn-gateway-connector/bin/libttn-gateway-connector.so
 
 echo "Packet Forwarder"
 cd /opt/iotloragateway/dev/packet_forwarder/mp_pkt_fwd
+git checkout docker
 make -j 4
 cp /opt/iotloragateway/dev/packet_forwarder/mp_pkt_fwd/mp_pkt_fwd /opt/iotloragateway/packetforwarder_hat
 
@@ -40,6 +41,7 @@ make -j 4
 echo "Packet Forwarder"
 cd /opt/iotloragateway/dev/packet_forwarder/mp_pkt_fwd
 make clean
+git checkout docker_sg0
 make -j 4
 cp /opt/iotloragateway/dev/packet_forwarder/mp_pkt_fwd/mp_pkt_fwd /opt/iotloragateway/packetforwarder_sg0
 
@@ -51,5 +53,6 @@ make -j 4
 echo "Packet Forwarder"
 cd /opt/iotloragateway/dev/packet_forwarder/mp_pkt_fwd
 make clean
+git checkout docker_sg1
 make -j 4
 cp /opt/iotloragateway/dev/packet_forwarder/mp_pkt_fwd/mp_pkt_fwd /opt/iotloragateway/packetforwarder_sg1
