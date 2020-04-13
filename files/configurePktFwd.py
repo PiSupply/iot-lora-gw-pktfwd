@@ -102,11 +102,8 @@ genConfig('local_conf_sg1.json', config, configLora2)
 #If SG0 Enabled
 #Start Packet Forwarder SG0
 #Reset on pin 38
-sleep(2)
+sleep(10)
 print("Nebra Smart Gateway")
-print("Resetting concentrator pin 38")
-
-#sleep(7)
 print("Starting")
 subprocess.Popen("./packetforwarder_sg0")
 
@@ -117,7 +114,7 @@ subprocess.Popen("./packetforwarder_sg0")
 print("Nebra Smart Gateway")
 print("Resetting concentrator pin 39")
 
-sleep(5)
+sleep(10)
 print("Starting")
 subprocess.Popen("./packetforwarder_sg1")
 
