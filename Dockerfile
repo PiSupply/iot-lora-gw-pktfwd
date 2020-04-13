@@ -50,8 +50,8 @@ RUN chmod +x ./packetforwarder_sg1
 
 COPY files/run_pkt.sh .
 COPY files/configurePktFwd.py .
-COPY files/reset-all.sh .
-RUN chmod +x reset-all.sh
+COPY files/reset-pins.sh .
+RUN chmod +x reset-pins.sh
 RUN chmod +x run_pkt.sh
 RUN chmod +x configurePktFwd.py
 
