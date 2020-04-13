@@ -40,14 +40,16 @@ COPY --from=buildstep /usr/lib/libttn* /usr/lib/
 
 COPY lora_templates lora_templates/
 
-RUN cp lora_templates/local_conf.json.template local_conf.json
-RUN cp lora_templates/EU-global_conf.json global_conf.json
+RUN cp lora_templates/local_conf.json.template local_conf_HAT.json
+RUN cp lora_templates/EU-global_conf.json global_conf_HAT.json
 RUN cp lora_templates/local_conf.json.template local_conf_sg0.json
 RUN cp lora_templates/EU-global_conf.json global_conf_sg0.json
 RUN cp lora_templates/local_conf.json.template local_conf_sg1.json
 RUN cp lora_templates/EU-global_conf.json global_conf_sg1.json
 
-RUN chmod 777 ./local_conf.json
+RUN chmod 777 ./local_conf_HAT.json
+RUN chmod 777 ./local_conf_sg0.json
+RUN chmod 777 ./local_conf_sg1.json
 RUN chmod +x ./packetforwarder_hat
 RUN chmod +x ./packetforwarder_sg0
 RUN chmod +x ./packetforwarder_sg1
