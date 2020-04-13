@@ -4,10 +4,10 @@ if [ ! -d "/sys/class/gpio/gpio22" ]; then
     echo "22" > /sys/class/gpio/export
 fi
 if [ ! -d "/sys/class/gpio/gpio38" ]; then
-    echo "22" > /sys/class/gpio/export
+    echo "38" > /sys/class/gpio/export
 fi
 if [ ! -d "/sys/class/gpio/gpio39" ]; then
-    echo "22" > /sys/class/gpio/export
+    echo "39" > /sys/class/gpio/export
 fi
 
 echo "out" > /sys/class/gpio/gpio22/direction
