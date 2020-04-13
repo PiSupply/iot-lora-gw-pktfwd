@@ -41,7 +41,7 @@ make -j 4
 echo "Packet Forwarder"
 cd /opt/iotloragateway/dev/packet_forwarder/mp_pkt_fwd
 make clean
-git checkout docker_sg0
+git checkout docker-sg0
 make -j 4
 cp /opt/iotloragateway/dev/packet_forwarder/mp_pkt_fwd/mp_pkt_fwd /opt/iotloragateway/packetforwarder_sg0
 
@@ -53,6 +53,6 @@ make -j 4
 echo "Packet Forwarder"
 cd /opt/iotloragateway/dev/packet_forwarder/mp_pkt_fwd
 make clean
-git checkout docker_sg1
+git checkout docker-sg1
 make -j 4
 cp /opt/iotloragateway/dev/packet_forwarder/mp_pkt_fwd/mp_pkt_fwd /opt/iotloragateway/packetforwarder_sg1
