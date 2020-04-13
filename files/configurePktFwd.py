@@ -76,13 +76,13 @@ with open("/opt/iotloragateway/config/gateway_configuration.yml", 'r') as yamlFi
     except yaml.YAMLError as exc:
         print(exc)
 #Write configuration file for HAT packet
-genConfig('local_conf_HAT.json', config, configLoRa1)
+genConfig('local_conf_HAT.json', config, configLora1)
 
 #Write configuration file for SG0
-genConfig('local_conf_sg0.json', config, configLoRa1)
+genConfig('local_conf_sg0.json', config, configLora1)
 
 #Write configuration file for SG1
-genConfig('local_conf_sg1.json', config, configLoRa1)
+genConfig('local_conf_sg1.json', config, configLora2)
 
 #If HAT Enabled
 
