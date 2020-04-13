@@ -44,7 +44,7 @@ print("Resetting concentrator pin 38")
 
 #sleep(7)
 print("Starting")
-subprocess.popen("./packetforwarder_sg0")
+subprocess.Popen("./packetforwarder_sg0")
 
 
 #If SG1 Enabled
@@ -55,7 +55,7 @@ print("Resetting concentrator pin 39")
 
 sleep(5)
 print("Starting")
-os.system("./packetforwarder_sg1")
+subprocess.Popen("./packetforwarder_sg1")
 
 
 #Sleep forever
