@@ -24,14 +24,14 @@ sleep(10)
 
 #Start Packet Forwarder HAT
 #Reset on pin 38
-sleep(2)
-print("Pi Supply LoRa HAT")
-print("Resetting concentrator pin 22")
+#sleep(2)
+#print("Pi Supply LoRa HAT")
+#print("Resetting concentrator pin 22")
 
 #sleep(7)
-print("Starting")
-os.system("./packetforwarder_hat")
-while True:
+#print("Starting")
+#os.system("./packetforwarder_hat")
+#while True:#
     sleep(120)
 
 
