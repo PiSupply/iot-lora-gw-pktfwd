@@ -24,7 +24,6 @@ regionList = {
     "KR920" : "KR-global_conf.json",
     "RU864" : "RU-global_conf.json",
     "US915" : "US-global_conf.json"
-
 }
 
 #Configuration function
@@ -78,8 +77,18 @@ def genConfig(loraFile, config, configLora):
     with open(loraFile, 'w') as jsonOut:
         json.dump(newConfig, jsonOut)
 
-def getRegionConf(regionId):
-
+def writeRegionConf(regionId):
+    regionconfFile = "/opt/iotloragateway/packet_forwarder/lora_templates/"+regionList[regionId]
+    with open(regionconfFile) as regionconfJFile:
+        newGlobal = json.load(regionconfJFile)
+    if(moduleId == 0):
+        globalPath = "/opt/iotloragateway/packet_forwarder/global_conf_sg0.json"
+    elif(moduleId == 1):
+        globalPath = "/opt/iotloragateway/packet_forwarder/global_conf_sg1.json"
+    else:
+        globalPath = "/opt/iotloragateway/packet_forwarder/global_conf_HAT.json"
+    with open(loraFile, 'w') as jsonOut:
+        json.dump(globalPath, newGlobal)
 
 
 
