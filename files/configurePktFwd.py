@@ -93,7 +93,7 @@ genConfig('local_conf_sg1.json', config, configLora2)
 #Reset on pin 38
 while True:
     if(moduleId == 0):
-        if(configLora['enabled'] == False):
+        if(configLora1['enabled'] == False):
             print("Forwarder Disabled")
             while True:
                 sleep(120)
@@ -106,7 +106,7 @@ while True:
             os.system("./packetforwarder_sg0")
             print("Software crashed, restarting, hatsg1")
     elif(moduleId == 1):
-        if(configLora['enabled'] == False):
+        if(configLora2['enabled'] == False):
             print("Forwarder Disabled")
             while True:
                 sleep(120)
