@@ -104,7 +104,7 @@ while True:
             os.system("./reset-38.sh")
             sleep(2)
             os.system("./packetforwarder_sg0")
-            print("Software crashed, restarting, hatsg1")
+            print("Software crashed, restarting, hatsg0")
     elif(moduleId == 1):
         if(configLora2['enabled'] == False):
             print("Forwarder Disabled")
@@ -116,8 +116,8 @@ while True:
             print("Starting")
             os.system("./reset-39.sh")
             sleep(2)
-            os.system("./packetforwarder_sg2")
-            print("Software crashed, restarting, sg2")
+            os.system("./packetforwarder_sg1")
+            print("Software crashed, restarting, sg1")
 
 
 
