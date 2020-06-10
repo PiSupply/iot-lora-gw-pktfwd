@@ -117,7 +117,7 @@ while True:
             os.system("./reset-39.sh")
             sleep(2)
             os.system("./packetforwarder_sg2")
-            print("Software crashed, restarting, sg1")
+            print("Software crashed, restarting, sg2")
 
 
 

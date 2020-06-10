@@ -6,7 +6,7 @@
 
 
 #Reset all pins
-./reset-pins.sh
+#./reset-pins.sh
 
 #Run python to do configuration and run the induvidual forwarders
 python3 -u configurePktFwd.py
