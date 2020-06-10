@@ -84,30 +84,40 @@ genConfig('local_conf_sg0.json', config, configLora1)
 #Write configuration file for SG1
 genConfig('local_conf_sg1.json', config, configLora2)
 
+
+
+
 #If HAT Enabled
-if(configLora['enabled'] == False):
-    print("Forwarder Disabled")
-    while True:
-        sleep(120)
+
 
 #Reset on pin 38
 while True:
     if(moduleId == 0):
-        sleep(10)
-        print("Nebra Smart Gateway 1")
-        print("Starting")
-        os.system("./reset-38.sh")
-        sleep(2)
-        os.system("./packetforwarder_sg0")
-        print("Software crashed, restarting")
+        if(configLora['enabled'] == False):
+            print("Forwarder Disabled")
+            while True:
+                sleep(120)
+        else:
+            sleep(10)
+            print("Nebra Smart Gateway 1")
+            print("Starting")
+            os.system("./reset-38.sh")
+            sleep(2)
+            os.system("./packetforwarder_sg0")
+            print("Software crashed, restarting, hatsg1")
     elif(moduleId == 1):
-        sleep(10)
-        print("Nebra Smart Gateway 2")
-        print("Starting")
-        os.system("./reset-39.sh")
-        sleep(2)
-        os.system("./packetforwarder_sg2")
-        print("Software crashed, restarting")
+        if(configLora['enabled'] == False):
+            print("Forwarder Disabled")
+            while True:
+                sleep(120)
+        else:
+            sleep(10)
+            print("Nebra Smart Gateway 2")
+            print("Starting")
+            os.system("./reset-39.sh")
+            sleep(2)
+            os.system("./packetforwarder_sg2")
+            print("Software crashed, restarting, sg1")
 
 
 
