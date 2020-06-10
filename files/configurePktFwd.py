@@ -124,6 +124,8 @@ while True:
         else:
             sleep(10)
             print("Nebra Smart Gateway 1")
+            print("Frequency" + str(configLora1['frequency-plan']))
+            writeRegionConf(str(configLora1['frequency-plan']))
             print("Starting")
             os.system("./reset-38.sh")
             sleep(2)
@@ -137,6 +139,8 @@ while True:
         else:
             sleep(10)
             print("Nebra Smart Gateway 2")
+            print("Frequency" + str(configLora2['frequency-plan']))
+            writeRegionConf(str(configLora2['frequency-plan']))
             print("Starting")
             os.system("./reset-39.sh")
             sleep(2)
