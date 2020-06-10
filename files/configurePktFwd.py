@@ -87,8 +87,8 @@ def writeRegionConf(regionId):
         globalPath = "/opt/iotloragateway/packet_forwarder/global_conf_sg1.json"
     else:
         globalPath = "/opt/iotloragateway/packet_forwarder/global_conf_HAT.json"
-    with open(loraFile, 'w') as jsonOut:
-        json.dump(globalPath, newGlobal)
+    with open(globalPath, 'w') as jsonOut:
+        json.dump(newGlobal, jsonOut)
 
 
 
