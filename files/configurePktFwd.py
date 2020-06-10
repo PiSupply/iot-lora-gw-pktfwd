@@ -7,7 +7,7 @@ import json
 from pprint import pprint
 
 from time import sleep
-#moduleId = int(os.environ['LORAMODULE'])
+moduleId = int(os.environ['LORAMODULE'])
 #moduleId = 0
 
 print("Sleeping 10 seconds")
@@ -85,31 +85,30 @@ genConfig('local_conf_sg0.json', config, configLora1)
 genConfig('local_conf_sg1.json', config, configLora2)
 
 #If HAT Enabled
+if(configLora['enabled'] == False):
+    print("Forwarder Disabled")
+    while True:
+        sleep(120)
 
-#Start Packet Forwarder HAT
-#Reset on pin 38
-#sleep(2)
-#print("Pi Supply LoRa HAT")
-#print("Resetting concentrator pin 22")
-
-#sleep(7)
-#print("Starting")
-#os.system("./packetforwarder_hat")
-#while True:#
-#    sleep(120)
-
-
-#If SG0 Enabled
-#Start Packet Forwarder SG0
 #Reset on pin 38
 while True:
+    if(moduleId == 0):
+        sleep(10)
+        print("Nebra Smart Gateway 1")
+        print("Starting")
+        os.system("./reset-38.sh")
+        sleep(2)
+        os.system("./packetforwarder_sg0")
+        print("Software crashed, restarting")
+    elif(moduleId == 1):
+        sleep(10)
+        print("Nebra Smart Gateway 2")
+        print("Starting")
+        os.system("./reset-39.sh")
+        sleep(2)
+        os.system("./packetforwarder_sg2")
+        print("Software crashed, restarting")
 
-    sleep(10)
-    print("Nebra Smart Gateway")
-    print("Starting")
-    #subprocess.Popen("./packetforwarder_sg0")
-    os.system("./packetforwarder_sg0")
-    print("Software crashed, restarting")
 
 
 #If SG1 Enabled
