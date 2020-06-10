@@ -13,6 +13,20 @@ moduleId = int(os.environ['LORAMODULE'])
 print("Sleeping 10 seconds")
 sleep(10)
 
+#Region dictionary
+regionList = {
+    "AS920" : "AS1-global_conf.json",
+    "AS923" : "AS1-global_conf.json",
+    "AU915" : "AU-global_conf.json",
+    "CN470" : "CN-global_conf.json",
+    "EU868" : "EU-global_conf.json",
+    "IN865" : "IN-global_conf.json",
+    "KR920" : "KR-global_conf.json",
+    "RU864" : "RU-global_conf.json",
+    "US915" : "US-global_conf.json"
+
+}
+
 #Configuration function
 
 def genConfig(loraFile, config, configLora):
@@ -64,6 +78,7 @@ def genConfig(loraFile, config, configLora):
     with open(loraFile, 'w') as jsonOut:
         json.dump(newConfig, jsonOut)
 
+def getRegionConf(regionId):
 
 
 
